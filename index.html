@@ -21,9 +21,9 @@
   </script>
 
   <meta property="og:type" content="website">
-<meta property="og:title" content="北溟之鲲的专利博客">
+<meta property="og:title" content="北溟之鲲的技术博客">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="北溟之鲲的专利博客">
+<meta property="og:site_name" content="北溟之鲲的技术博客">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="北溟之鲲">
 <meta name="twitter:card" content="summary">
@@ -40,7 +40,7 @@
   };
 </script>
 
-  <title>北溟之鲲的专利博客</title>
+  <title>北溟之鲲的技术博客</title>
   
 
 
@@ -92,7 +92,7 @@
     <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">北溟之鲲的专利博客</span>
+        <span class="site-title">北溟之鲲的技术博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -144,7 +144,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/29/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/29/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AESSH%E7%99%BB%E5%BD%95%E5%92%8C%E6%97%A0%E7%BA%BF%E7%BD%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -153,12 +153,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="北溟之鲲的专利博客">
+      <meta itemprop="name" content="北溟之鲲的技术博客">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/02/29/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+            <a href="/2020/02/29/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AESSH%E7%99%BB%E5%BD%95%E5%92%8C%E6%97%A0%E7%BA%BF%E7%BD%91/" class="post-title-link" itemprop="url">树莓派系统配置SSH登录和无线网</a>
         </h1>
 
         <div class="post-meta">
@@ -168,7 +168,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-02-29 11:31:09" itemprop="dateCreated datePublished" datetime="2020-02-29T11:31:09+08:00">2020-02-29</time>
+              <time title="创建时间：2020-02-29 18:51:44" itemprop="dateCreated datePublished" datetime="2020-02-29T18:51:44+08:00">2020-02-29</time>
             </span>
 
           
@@ -182,20 +182,302 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+          <p>1.在SD卡上烧写完系统后，在根目录下创建一个名称为“SSH”的文件，无扩展名，实现SSH访问登录。</p>
+<p>2.在根目录下创建一个名称为wpa_supplicant.conf的文件，填入以下内容：</p>
+<blockquote>
+<p>country=CN<br>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev<br>update_config=1<br>network={<br>ssid=”无线网名”<br>psk=”无线网密码”<br>key_mgmt=WPA-PSK<br>priority=1<br>}</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/29/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AESSH%E7%99%BB%E5%BD%95%E5%92%8C%E6%97%A0%E7%BA%BF%E7%BD%91/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/29/%E5%9F%BA%E4%BA%8EUbuntu%E6%90%AD%E5%BB%BA%E7%9A%84LAMP%E6%9C%8D%E5%8A%A1%E5%99%A8Mysql%E8%87%AA%E5%8A%A8%E6%8E%89%E7%BA%BF%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="北溟之鲲">
+      <meta itemprop="description" content="">
+    </span>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="北溟之鲲的技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/29/%E5%9F%BA%E4%BA%8EUbuntu%E6%90%AD%E5%BB%BA%E7%9A%84LAMP%E6%9C%8D%E5%8A%A1%E5%99%A8Mysql%E8%87%AA%E5%8A%A8%E6%8E%89%E7%BA%BF%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="post-title-link" itemprop="url">基于Ubuntu搭建的LAMP服务器Mysql自动掉线的解决办法</a>
+        </h1>
 
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-29 18:50:35" itemprop="dateCreated datePublished" datetime="2020-02-29T18:50:35+08:00">2020-02-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>利用谷歌云服务器的Ubuntu 18.04 LTS搭建了LAMP服务器来运行Wordpress博客，却发现每天早上醒来就无法访问，显示“Error establishing a database connection”。网上查询了一下解决方案，发现是因为Mysql服务器有个链接超时参数，默认8小时，超过这个时间没有链接会自动关闭，需要修改这个参数。但我的Ubuntu中却找不到所说的参数文件，经过不停地寻找和尝试，终于找到了正确的修改文件。解决方法如下：</p>
+<p>首先确认是不是8小时超时：</p>
+<p>1、登录Mysql：</p>
+<p><code>mysql -u root -p</code></p>
+<p>2、查询超时时间：</p>
+<p><code>show global variables like &#39;wait_timeout&#39;;</code></p>
+<p>应该会显示以下信息：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/29/%E5%9F%BA%E4%BA%8EUbuntu%E6%90%AD%E5%BB%BA%E7%9A%84LAMP%E6%9C%8D%E5%8A%A1%E5%99%A8Mysql%E8%87%AA%E5%8A%A8%E6%8E%89%E7%BA%BF%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/29/%E5%88%A9%E7%94%A8%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9E%B6%E8%AE%BE%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="北溟之鲲">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="北溟之鲲的技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/29/%E5%88%A9%E7%94%A8%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9E%B6%E8%AE%BE%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">利用树莓派架设共享打印机服务器</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-29 18:49:48" itemprop="dateCreated datePublished" datetime="2020-02-29T18:49:48+08:00">2020-02-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>公司有两台打印机：一台用来打发票的针式打印机，一台用来打文件的Brother MFC-7360打印扫描一体机，两台都不支持网络打印。于是准备利用树莓派架设一个打印服务器，以便实现网络共享打印。</p>
+<p>经过研究，利用树莓派实现打印机共享主要有两种个方法：一是利用CUPS架设打印服务器，二是利用vhusbd共享USB口。两者各有优缺点：CUPS只能实现Brother MFC-7360打印扫描一体机的打印共享，不能实现扫描功能，并且另一台打印机没有Linux驱动，不能用CUPS共享；vhusbd免费版只能同时供一个用户使用，并且只能同时共享一个USB端口。由于扫描和打印发票的功能使用很少，并且一般只有一个固定的人使用，所以采用了将CUPS和vhusbd配合使用的方案。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/29/%E5%88%A9%E7%94%A8%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9E%B6%E8%AE%BE%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA%E6%9C%8D%E5%8A%A1%E5%99%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/29/%E4%B8%BA%E5%9F%BA%E4%BA%8EUbuntu%E7%9A%84LAMP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E9%80%9ASSL%E5%AE%9E%E7%8E%B0https%E8%AE%BF%E9%97%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="北溟之鲲">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="北溟之鲲的技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/29/%E4%B8%BA%E5%9F%BA%E4%BA%8EUbuntu%E7%9A%84LAMP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E9%80%9ASSL%E5%AE%9E%E7%8E%B0https%E8%AE%BF%E9%97%AE/" class="post-title-link" itemprop="url">为基于Ubuntu的LAMP服务器开通SSL实现https访问</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-29 18:49:09" itemprop="dateCreated datePublished" datetime="2020-02-29T18:49:09+08:00">2020-02-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>首先申请SSL证书，可以到阿里云申请，签发后下载Apache使用的证书。</p>
+<p>将下载的证书中的公钥（扩展名为.pem，如果不是请修改）和key文件上传到服务器，例如/etc/ssl目录下。</p>
+<p>进入Apache的网站管理目录：</p>
+<p><code>cd /etc/apache2/sites-available/</code></p>
+<p>将其中的default-ssl.conf复制一份：</p>
+<p><code>cp default-ssl.conf yourdomain-ssl.conf</code></p>
+<p>编辑复出来的配置文件：</p>
+<p><code>sudo nano yourdomain-ssl.conf</code></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/29/%E4%B8%BA%E5%9F%BA%E4%BA%8EUbuntu%E7%9A%84LAMP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E9%80%9ASSL%E5%AE%9E%E7%8E%B0https%E8%AE%BF%E9%97%AE/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/29/%E5%9F%BA%E4%BA%8EUbuntu%E6%90%AD%E5%BB%BALAMP%E5%A4%9A%E7%AB%99%E7%82%B9Web%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="北溟之鲲">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="北溟之鲲的技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/29/%E5%9F%BA%E4%BA%8EUbuntu%E6%90%AD%E5%BB%BALAMP%E5%A4%9A%E7%AB%99%E7%82%B9Web%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">基于Ubuntu搭建LAMP多站点Web服务器</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-29 18:22:03 / 修改时间：18:21:45" itemprop="dateCreated datePublished" datetime="2020-02-29T18:22:03+08:00">2020-02-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文介绍如何基于Ubuntu搭建支持多站点的LAMP服务器，可以根据不同域名打开相应站点。不说费话，操作过程如下：</p>
+<h2 id="一、搭建LAMP服务器"><a href="#一、搭建LAMP服务器" class="headerlink" title="一、搭建LAMP服务器"></a>一、搭建LAMP服务器</h2><p>1、更新Ubuntu的软件源：</p>
+<p><code>sudo apt-get update</code></p>
+<p>2、更新软件包： </p>
+<p><code>sudo apt-get upgrade</code></p>
+<p>3、再次更新源（可选）：</p>
+<p><code>sudo apt-get update</code></p>
+<p>4、安装Apache2：</p>
+<p><code>sudo apt-get install apache2</code></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/29/%E5%9F%BA%E4%BA%8EUbuntu%E6%90%AD%E5%BB%BALAMP%E5%A4%9A%E7%AB%99%E7%82%B9Web%E6%9C%8D%E5%8A%A1%E5%99%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -277,7 +559,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

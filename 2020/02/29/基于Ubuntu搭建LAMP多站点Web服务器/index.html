@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文介绍如何基于Ubuntu搭建支持多站点的LAMP服务器，可以根据不同域名打开相应站点。不说费话，操作过程如下： 一、搭建LAMP服务器1、更新Ubuntu的软件源： sudo apt-get update 2、更新软件包：  sudo apt-get upgrade 3、再次更新源（可选）： sudo apt-get update 4、安装Apache2： sudo apt-get insta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Ubuntu搭建LAMP多站点Web服务器">
+<meta property="og:url" content="http://yoursite.com/2020/02/29/%E5%9F%BA%E4%BA%8EUbuntu%E6%90%AD%E5%BB%BALAMP%E5%A4%9A%E7%AB%99%E7%82%B9Web%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:site_name" content="北溟之鲲的技术博客">
+<meta property="og:description" content="本文介绍如何基于Ubuntu搭建支持多站点的LAMP服务器，可以根据不同域名打开相应站点。不说费话，操作过程如下： 一、搭建LAMP服务器1、更新Ubuntu的软件源： sudo apt-get update 2、更新软件包：  sudo apt-get upgrade 3、再次更新源（可选）： sudo apt-get update 4、安装Apache2： sudo apt-get insta">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-29T10:22:03.813Z">
+<meta property="article:modified_time" content="2020-02-29T10:21:45.503Z">
+<meta property="article:author" content="北溟之鲲">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/02/29/%E5%9F%BA%E4%BA%8EUbuntu%E6%90%AD%E5%BB%BALAMP%E5%A4%9A%E7%AB%99%E7%82%B9Web%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>基于Ubuntu搭建LAMP多站点Web服务器 | 北溟之鲲的技术博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">北溟之鲲的技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/29/%E5%9F%BA%E4%BA%8EUbuntu%E6%90%AD%E5%BB%BALAMP%E5%A4%9A%E7%AB%99%E7%82%B9Web%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="北溟之鲲">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="北溟之鲲的技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于Ubuntu搭建LAMP多站点Web服务器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-29 18:22:03 / 修改时间：18:21:45" itemprop="dateCreated datePublished" datetime="2020-02-29T18:22:03+08:00">2020-02-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文介绍如何基于Ubuntu搭建支持多站点的LAMP服务器，可以根据不同域名打开相应站点。不说费话，操作过程如下：</p>
+<h2 id="一、搭建LAMP服务器"><a href="#一、搭建LAMP服务器" class="headerlink" title="一、搭建LAMP服务器"></a>一、搭建LAMP服务器</h2><p>1、更新Ubuntu的软件源：</p>
+<p><code>sudo apt-get update</code></p>
+<p>2、更新软件包： </p>
+<p><code>sudo apt-get upgrade</code></p>
+<p>3、再次更新源（可选）：</p>
+<p><code>sudo apt-get update</code></p>
+<p>4、安装Apache2：</p>
+<p><code>sudo apt-get install apache2</code></p>
+<a id="more"></a>
+
+<p>5、安装PHP：</p>
+<p><code>sudo apt-get install PHP</code></p>
+<p>6、安装Mysql服务器：</p>
+<p><code>sudo apt-get install mysql-server</code></p>
+<p>7、安装PHPMyAdimin：</p>
+<p><code>sudo apt-get install phpmyadmin</code></p>
+<p>安装过程中第一次弹出对话框时，通过空格键选择apache2，回车确认；第二次弹出对话框时，直接回车确认，然后输出两次密码，回车确认。</p>
+<p>至此服务器搭建完毕。输入服务器IP地址/phpmyadmin即可登录管理数据库了，用户名：root，密码为设定密码。</p>
+<h2 id="二、解决登录Mysql时的1068错误"><a href="#二、解决登录Mysql时的1068错误" class="headerlink" title="二、解决登录Mysql时的1068错误"></a>二、解决登录Mysql时的1068错误</h2><p>如果phpmyadmin中登录时出现1068错误，执行以下操作：</p>
+<p>1、登录mysql：</p>
+<p><code>sudo mysql -u root</code></p>
+<p>2、查看root用户的plugin：</p>
+<p><code>select user, plugin from mysql.user;</code></p>
+<p>3、如果root的plugin是auth_socket，则输入以下命令：</p>
+<p><code>update mysql.user set authentication_string=PASSWORD(&#39;newPwd&#39;), plugin=&#39;mysql_native_password&#39; where user=&#39;root&#39;;</code></p>
+<p>将其中newPwd改为你要设定的密码。</p>
+<p>4、刷新Mysql：</p>
+<p><code>flush privileges;</code></p>
+<p>再次执行步骤2的命令，看root用户的plugin是不是已经为mysql_native_password了，如果是，退出Mysql：</p>
+<p><code>exit;</code></p>
+<p>5、重启Mysql：</p>
+<p><code>sudo service mysql restart</code></p>
+<p>或者重启动ubuntu系统：</p>
+<p><code>sudo reboot</code></p>
+<p>现在可以正常通过phpmyadmin登录Mysql了。</p>
+<h2 id="三、设置多站点支持"><a href="#三、设置多站点支持" class="headerlink" title="三、设置多站点支持"></a>三、设置多站点支持</h2><p>1、进入虚拟主机配置文件夹：</p>
+<p><code>cd /etc/apache2/sites-available/</code></p>
+<p>2、复制默认的虚拟主机配置文件：</p>
+<p><code>sudo cp 000-default.conf yourdomain.conf</code></p>
+<p>3、分别编辑配置文件：</p>
+<p><code>sudo nano yourdomain.conf</code></p>
+<p>在文件中ServerAdmin的下面增加一行：</p>
+<p><code>ServerName  yourdomain</code></p>
+<p>将下一行DocumentRoot最后的html修改为你的网站所在目录。</p>
+<p>将&lt;VirtualHost *:80&gt;到</VirtualHost>之间的内容复制一份并粘贴到下面，并在“ServerName yourdomain”中的域名中增加www，其他不动。</p>
+<p>Ctrl+X，再输入y，回车退出编辑。</p>
+<p>4、在sites-enabled目录下建立符号链接：</p>
+<p><code>sudo ln -s /etc/apache2/sites-available/yourdomain.conf /etc/apache2/sites-enabled/yourdomain.conf</code></p>
+<p>5、重启apache2：</p>
+<p><code>sudo service apache2 restart</code></p>
+<p>6、在/var/www/目录下建立站点文件夹（例如patent）：</p>
+<p><code>cd /var/www/</code><br><code>sudo mkdir patent</code></p>
+<p>7、将网站代码放入patent文件夹，并且对其赋于读写权限：</p>
+<p><code>sudo chmod -R 777 /var/www/patent</code></p>
+<p>将域名的A记录解析到服务器的IP地址，输入域名即可安装或者访问。</p>
+<p>PS：如果是Wordpress源码，在安装完成后，还须执行以下命令：</p>
+<p><code>sudo chown -R www /var/www/patent</code></p>
+<p>或</p>
+<p><code>sudo chown -R www-data /var/www/patent</code></p>
+<p>通过上述步骤1-7可以设置其他站点。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/29/%E4%B8%BA%E5%9F%BA%E4%BA%8EUbuntu%E7%9A%84LAMP%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E9%80%9ASSL%E5%AE%9E%E7%8E%B0https%E8%AE%BF%E9%97%AE/" rel="next" title="为基于Ubuntu的LAMP服务器开通SSL实现https访问">
+      为基于Ubuntu的LAMP服务器开通SSL实现https访问 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、搭建LAMP服务器"><span class="nav-number">1.</span> <span class="nav-text">一、搭建LAMP服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、解决登录Mysql时的1068错误"><span class="nav-number">2.</span> <span class="nav-text">二、解决登录Mysql时的1068错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、设置多站点支持"><span class="nav-number">3.</span> <span class="nav-text">三、设置多站点支持</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">北溟之鲲</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">北溟之鲲</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
